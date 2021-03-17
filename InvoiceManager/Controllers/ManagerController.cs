@@ -8,6 +8,7 @@ using InvoiceManager.Logic;
 using Microsoft.Extensions.Options;
 using System;
 using DataLibrary.Models;
+using DataLibrary.BussinessLogic;
 
 namespace InvoiceManager.Controllers
 {
@@ -22,7 +23,20 @@ namespace InvoiceManager.Controllers
         // GET: ManagerController/Details/5
         public ActionResult Details(int id)
         {
-            return View();
+            var data = LoadOneInvoice(id);
+
+            Models.InvoiceModel invoice = new Models.InvoiceModel() 
+            {                
+                Id = data.Id,
+                InvoiceId = data.InvoiceId,
+                Description = data.Description,
+                Value = data.Value,
+                CreatedAt = data.CreatedAt,
+                UpdatedAt = data.UpdatedAt,
+                Date = data.Date
+            };
+
+            return View(invoice);
         }
 
         // GET: ManagerController/Create
@@ -44,7 +58,7 @@ namespace InvoiceManager.Controllers
                     model.Date
                     );
                    
-                return RedirectToAction("Create");   
+                return RedirectToAction("ViewInvoices");   
             }
             return View();
         }
@@ -54,19 +68,18 @@ namespace InvoiceManager.Controllers
         {
             var data = LoadOneInvoice(id);
 
-            Models.InvoiceModel invoices = new Models.InvoiceModel();
-
-            foreach (var item in data)
+            Models.InvoiceModel invoice = new Models.InvoiceModel()
             {
-                invoices.Id = item.Id;
-                invoices.InvoiceId = item.InvoiceId;
-                invoices.Value = item.Value;
-                invoices.Description = item.Description;
-                invoices.CreatedAt = item.CreatedAt;
-                    
-            }
+                Id = data.Id,
+                InvoiceId = data.InvoiceId,
+                Description = data.Description,
+                Value = data.Value,
+                CreatedAt = data.CreatedAt,
+                UpdatedAt = data.UpdatedAt,
+                Date = data.Date
+            };
 
-            return View(invoices);
+            return View(invoice);
         }
 
         // POST: ManagerController/Edit/5

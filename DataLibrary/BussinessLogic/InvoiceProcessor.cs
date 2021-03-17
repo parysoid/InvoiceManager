@@ -37,31 +37,31 @@ namespace DataLibrary.BussinessLogic
                 Id = model.Id,
                 Description = model.Description,
                 Value = model.Value,
-                CreatedAt = model.CreatedAt                
+                Date = model.Date                
             };
 
             string sql = @"UPDATE dbo.Invoices
                            SET Description = @Description,
                                Value = @Value,
-                               CreatedAt = @CreatedAt,
+                               Date = @Date,
                                UpdatedAt = GETDATE()
                            WHERE Id = @Id";
 
             return SqlDataAccess.SaveData(sql, data);
         }
 
-        public static List<InvoiceModel> LoadOneInvoice(int invoiceId)
-        {
-            InvoiceModel data = new InvoiceModel
-            {
-                Id = invoiceId
-            };
+        //public static List<InvoiceModel> LoadOneInvoicex(int invoiceId)
+        //{
+        //    InvoiceModel data = new InvoiceModel
+        //    {
+        //        Id = invoiceId
+        //    };
 
-            string sql = @"SELECT Id, InvoiceId, Description, Value, CreatedAt
-                           FROM dbo.Invoices
-                           WHERE Id = @Id;";
-            return SqlDataAccess.LoadOne<InvoiceModel>(sql,invoiceId);
-        }
+        //    string sql = @"SELECT Id, InvoiceId, Description, Value, CreatedAt
+        //                   FROM dbo.Invoices
+        //                   WHERE Id = @Id;";
+        //    return SqlDataAccess.LoadOne<InvoiceModel>(sql,invoiceId);
+        //}
 
         public static int DeleteOneInvoice(int invoiceId)
         {
@@ -74,6 +74,15 @@ namespace DataLibrary.BussinessLogic
                            WHERE Id = @Id;";
 
             return SqlDataAccess.SaveData(sql, data);
+        }
+
+        public static InvoiceModel LoadOneInvoice(int invoiceId)
+        {       
+
+            string sql = @"SELECT Id, InvoiceId, Description, Value, CreatedAt
+                           FROM dbo.Invoices
+                           WHERE Id = @Id;";
+            return SqlDataAccess.LoadOne(sql, invoiceId);
         }
     }
 }

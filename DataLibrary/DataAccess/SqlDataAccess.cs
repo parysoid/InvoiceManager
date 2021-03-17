@@ -6,6 +6,7 @@ using System.Data.SqlClient;
 using System.Linq;
 using Dapper;
 using DataLibrary.DataContext;
+using DataLibrary.Models;
 
 namespace DataLibrary
 {
@@ -38,11 +39,19 @@ namespace DataLibrary
             }
         }
 
-        public static List<T> LoadOne<T>(string sql, int id)
+        //public static List<T> LoadOne<T>(string sql, int id)
+        //{
+        //    using (IDbConnection cnn = new SqlConnection(GetConnectionString()))
+        //    {
+        //        return cnn.Query<T>(sql, new { Id = id }).ToList();
+        //    }
+        //}
+
+        public static InvoiceModel LoadOne(string sql, int id)
         {
             using (IDbConnection cnn = new SqlConnection(GetConnectionString()))
             {
-                return cnn.Query<T>(sql, new { Id = id }).ToList();
+                return cnn.QuerySingle<InvoiceModel>(sql, new { Id = id });
             }
         }
     }
