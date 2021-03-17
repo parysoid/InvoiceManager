@@ -30,7 +30,16 @@ namespace DataLibrary.BussinessLogic
             return SqlDataAccess.LoadData<InvoiceModel>(sql);
         }
 
-        public static int EditInvoice(/*int invoiceId,*/ InvoiceModel model)
+        public static InvoiceModel LoadOneInvoice(int invoiceId)
+        {       
+
+            string sql = @"SELECT Id, InvoiceId, Description, Value, CreatedAt, UpdatedAt, Date
+                           FROM dbo.Invoices
+                           WHERE Id = @Id;";
+            return SqlDataAccess.LoadOne(sql, invoiceId);
+        }
+
+        public static int EditInvoice(InvoiceModel model)
         {
             InvoiceModel data = new InvoiceModel
             {
@@ -50,19 +59,6 @@ namespace DataLibrary.BussinessLogic
             return SqlDataAccess.SaveData(sql, data);
         }
 
-        //public static List<InvoiceModel> LoadOneInvoicex(int invoiceId)
-        //{
-        //    InvoiceModel data = new InvoiceModel
-        //    {
-        //        Id = invoiceId
-        //    };
-
-        //    string sql = @"SELECT Id, InvoiceId, Description, Value, CreatedAt
-        //                   FROM dbo.Invoices
-        //                   WHERE Id = @Id;";
-        //    return SqlDataAccess.LoadOne<InvoiceModel>(sql,invoiceId);
-        //}
-
         public static int DeleteOneInvoice(int invoiceId)
         {
             InvoiceModel data = new InvoiceModel
@@ -74,15 +70,6 @@ namespace DataLibrary.BussinessLogic
                            WHERE Id = @Id;";
 
             return SqlDataAccess.SaveData(sql, data);
-        }
-
-        public static InvoiceModel LoadOneInvoice(int invoiceId)
-        {       
-
-            string sql = @"SELECT Id, InvoiceId, Description, Value, CreatedAt
-                           FROM dbo.Invoices
-                           WHERE Id = @Id;";
-            return SqlDataAccess.LoadOne(sql, invoiceId);
-        }
+        }     
     }
 }

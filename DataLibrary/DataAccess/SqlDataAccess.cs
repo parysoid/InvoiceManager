@@ -9,8 +9,7 @@ using DataLibrary.DataContext;
 using DataLibrary.Models;
 
 namespace DataLibrary
-{
-    
+{   
     public class SqlDataAccess
     {
         private static AppConfiguration settings = new AppConfiguration();
@@ -38,14 +37,6 @@ namespace DataLibrary
                 return cnn.Execute(sql, data);
             }
         }
-
-        //public static List<T> LoadOne<T>(string sql, int id)
-        //{
-        //    using (IDbConnection cnn = new SqlConnection(GetConnectionString()))
-        //    {
-        //        return cnn.Query<T>(sql, new { Id = id }).ToList();
-        //    }
-        //}
 
         public static InvoiceModel LoadOne(string sql, int id)
         {
