@@ -1,0 +1,85 @@
+﻿@model IEnumerable<InvoiceManager.Models.InvoiceModel>
+
+@{
+    ViewData["Title"] = "ViewInvoices";
+}
+
+<h1>Přehled faktur</h1>
+
+<p>
+    <a asp-action="Create">Přidat novou</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            @*<th>
+                @Html.DisplayNameFor(model => model.Id)
+            </th>*@
+            <th>
+                @Html.DisplayNameFor(model => model.InvoiceId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Description)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Value)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Date)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CreatedAt)
+            </th><th>
+                @Html.DisplayNameFor(model => model.UpdatedAt)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            @*<td>
+            @Html.DisplayFor(modelItem => item.Id)
+        </td>*@
+            <td>
+                @Html.DisplayFor(modelItem => item.InvoiceId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Description)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Value)
+            </td>
+            
+            @if (item.Date.Date == DateTime.Parse("01.01.0001 0:00:00").Date)
+            {
+                <td></td>
+            }
+            else
+            {
+                <td>
+                    @Html.DisplayFor(modelItem => item.Date)
+                </td>
+            }
+            <td>
+                @Html.DisplayFor(modelItem => item.CreatedAt)
+            </td>
+            @if (item.UpdatedAt.Date == DateTime.Parse("01.01.0001 0:00:00").Date)
+            {
+                <td></td>
+            }
+            else
+            {
+                <td>
+                    @Html.DisplayFor(modelItem => item.UpdatedAt)
+                </td>
+            }
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
+                @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

@@ -1,0 +1,50 @@
+﻿@model InvoiceManager.Models.InvoiceModel
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Edit</h1>
+
+<h4>InvoiceModel</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            @*<div class="form-group">
+                <label asp-for="Id" class="control-label"></label>
+                <input asp-for="Id" class="form-control" />
+                <span asp-validation-for="Id" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="InvoiceId" class="control-label"></label>
+                <input asp-for="InvoiceId" class="form-control" />
+                <span asp-validation-for="InvoiceId" class="text-danger"></span>
+            </div>*@
+            <div class="form-group">
+                <label asp-for="Description" class="control-label"></label>
+                <input asp-for="Description" class="form-control" value="@Model.Description"/>
+                <span asp-validation-for="Description" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Value" class="control-label"></label>
+                <input asp-for="Value" class="form-control" value="@Model.Value"/>
+                <span asp-validation-for="Value" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="CreatedAt" class="control-label"></label>
+                <input asp-for="CreatedAt" class="form-control" type="date" asp-format="{0:yyyy-MM-dd}"/>
+                <span asp-validation-for="CreatedAt" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="ViewInvoices">Back to List</a>
+</div>
+

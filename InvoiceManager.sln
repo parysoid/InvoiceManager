@@ -1,0 +1,39 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31025.194
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "InvoiceManager", "InvoiceManager\InvoiceManager.csproj", "{77A95361-7DBB-4EE4-9490-26B82D1C94E1}"
+EndProject
+Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "InvoiceManagerDB", "InvoiceManagerDB\InvoiceManagerDB.sqlproj", "{32043BE6-CDCD-4389-B28B-6A6CA86D1B4D}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DataLibrary", "DataLibrary\DataLibrary.csproj", "{136B09D0-B881-432B-A7F1-9DBA71CC99C2}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{77A95361-7DBB-4EE4-9490-26B82D1C94E1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{77A95361-7DBB-4EE4-9490-26B82D1C94E1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{77A95361-7DBB-4EE4-9490-26B82D1C94E1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{77A95361-7DBB-4EE4-9490-26B82D1C94E1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{32043BE6-CDCD-4389-B28B-6A6CA86D1B4D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{32043BE6-CDCD-4389-B28B-6A6CA86D1B4D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{32043BE6-CDCD-4389-B28B-6A6CA86D1B4D}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{32043BE6-CDCD-4389-B28B-6A6CA86D1B4D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{32043BE6-CDCD-4389-B28B-6A6CA86D1B4D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{32043BE6-CDCD-4389-B28B-6A6CA86D1B4D}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{136B09D0-B881-432B-A7F1-9DBA71CC99C2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{136B09D0-B881-432B-A7F1-9DBA71CC99C2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{136B09D0-B881-432B-A7F1-9DBA71CC99C2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{136B09D0-B881-432B-A7F1-9DBA71CC99C2}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {994C5986-AB0D-4A8B-B0C7-FFC8493B2859}
+	EndGlobalSection
+EndGlobal

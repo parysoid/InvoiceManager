@@ -1,0 +1,24 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Text;
+using Microsoft.EntityFrameworkCore;
+
+namespace DataLibrary.DataContext
+{
+    public class DatabaseContext : DbContext
+    {
+        public class OptionsBuild
+        {
+            public OptionsBuild()
+            {
+                settings = new AppConfiguration();
+                opsBuilder = new DbContextOptionsBuilder<DatabaseContext>();
+                opsBuilder.UseSqlServer(settings.sqlConnectionString);
+            }
+            public DbContextOptionsBuilder<DatabaseContext> opsBuilder { get; set; }
+            public DbContextOptions<DatabaseContext> dbOptions { get; set; }
+            private AppConfiguration settings { get; set; }
+        }
+        public static OptionsBuild ops = new OptionsBuild();
+    }
+}
