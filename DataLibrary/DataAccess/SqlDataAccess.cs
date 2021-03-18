@@ -45,5 +45,13 @@ namespace DataLibrary
                 return cnn.QuerySingle<InvoiceModel>(sql, new { Id = id });
             }
         }
+
+        public static List<T> LoadMonth<T>(string sql, DateTime start, DateTime end)
+        {
+            using (IDbConnection cnn = new SqlConnection(GetConnectionString()))
+            {
+                 return cnn.Query<T>(sql,new { Start = start, End = end}).ToList();
+            }
+        }
     }
 }

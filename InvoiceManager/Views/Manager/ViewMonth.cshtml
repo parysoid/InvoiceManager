@@ -1,0 +1,88 @@
+﻿@model IEnumerable<InvoiceManager.Models.InvoiceModel>
+@using Microsoft.AspNetCore.Http.Extensions
+
+@{ 
+    string x = Context.Request.Path;
+    int month = Convert.ToInt32(x.Substring(x.Length-1));
+    int next = month + 1;
+    int previous = month - 1;
+    //var month = Context.Request.GetDisplayUrl();
+    //var month = Context.Request.Query["id"];
+
+
+
+}
+
+@{
+    ViewData["Title"] = "ViewMonth";
+}
+
+<h1>Faktury za měsíc</h1>
+
+<p>
+    <a asp-action="Create">Přidat novou</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Id)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.InvoiceId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Description)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Value)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CreatedAt)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.UpdatedAt)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Date)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Id)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.InvoiceId)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Description)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Value)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CreatedAt)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.UpdatedAt)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Date)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+                    @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+                    @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+<p>@month</p>
+<a asp-controller="Manager" asp-action="ViewMonth" asp-route-month="@previous" asp->Starší</a>
+<a asp-controller="Manager" asp-action="ViewMonth" asp-route-month="@next" asp->Novější</a>

@@ -39,6 +39,15 @@ namespace DataLibrary.BussinessLogic
             return SqlDataAccess.LoadOne(sql, invoiceId);
         }
 
+        public static List<InvoiceModel> LoadMonth(DateTime start, DateTime end)
+        {
+
+            string sql = @"SELECT Id, InvoiceId, Description, Value, CreatedAt, UpdatedAt, Date
+                           FROM dbo.Invoices
+                           WHERE Date BETWEEN @Start AND @End;";
+            return SqlDataAccess.LoadMonth<InvoiceModel>(sql, start, end);
+        }
+
         public static int EditInvoice(InvoiceModel model)
         {
             InvoiceModel data = new InvoiceModel
@@ -70,6 +79,8 @@ namespace DataLibrary.BussinessLogic
                            WHERE Id = @Id;";
 
             return SqlDataAccess.SaveData(sql, data);
-        }     
+        }
+
+        
     }
 }

@@ -119,7 +119,7 @@ namespace InvoiceManager.Controllers
                 return View();
             }
         }
-
+        
         public ActionResult ViewInvoices()
         {
             var data = LoadInvoices();
@@ -138,6 +138,36 @@ namespace InvoiceManager.Controllers
                     Date = row.Date                   
                 });
             }
+
+            return View(invoices);
+        }
+
+        // GET: ManagerController/ViewMonth/0
+        [HttpGet]
+        [Route("Manager/ViewMonth/{month:int?}")]
+        public ActionResult ViewMonth(int month = 0)
+        {
+            var dates = DateAndTime.GetMonthStartEnd2(month);
+
+            var data = LoadMonth(dates[0],dates[1]);
+
+            List<Models.InvoiceModel> invoices = new List<Models.InvoiceModel>();
+
+            foreach (var row in data)
+            {
+                invoices.Add(new Models.InvoiceModel
+                {
+                    Id = row.Id,
+                    InvoiceId = row.InvoiceId,
+                    Description = row.Description,
+                    CreatedAt = row.CreatedAt,
+                    UpdatedAt = row.UpdatedAt,
+                    Value = row.Value,
+                    Date = row.Date                   
+                });
+            }
+
+            
 
             return View(invoices);
         }
