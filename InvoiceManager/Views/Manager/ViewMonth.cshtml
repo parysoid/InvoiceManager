@@ -2,15 +2,10 @@
 @using Microsoft.AspNetCore.Http.Extensions
 
 @{ 
-    string x = Context.Request.Path;
-    int month = Convert.ToInt32(x.Substring(x.Length-1));
+    string path = Context.Request.Path;
+    int month = Convert.ToInt32(path.Substring(path.LastIndexOf("/") + 1));
     int next = month + 1;
     int previous = month - 1;
-    //var month = Context.Request.GetDisplayUrl();
-    //var month = Context.Request.Query["id"];
-
-
-
 }
 
 @{
@@ -75,9 +70,9 @@
                     @Html.DisplayFor(modelItem => item.Date)
                 </td>
                 <td>
-                    @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
-                    @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
-                    @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+                    @Html.ActionLink("Edit", "Edit", new { id = item.Id}) |
+                    @Html.ActionLink("Details", "Details", new { id = item.Id }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.Id })
                 </td>
             </tr>
         }
