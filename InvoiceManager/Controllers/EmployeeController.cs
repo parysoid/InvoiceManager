@@ -65,43 +65,42 @@ namespace InvoiceManager.Controllers
         // GET: EmployeeController/Edit/5
         public ActionResult Edit(int id)
         {
-            return View();
+            var data = LoadOneEmployee(id);
+
+            Models.EmployeeModel employee = new Models.EmployeeModel()
+            {
+                Id = data.Id,
+                FirstName = data.FirstName,
+                LastName = data.LastName,
+                CreatedAt = data.CreatedAt,
+                UpdatedAt = data.UpdatedAt
+            };
+
+            return View(employee);
         }
 
         // POST: EmployeeController/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(int id, IFormCollection collection)
+        public ActionResult Edit(int id, DataLibrary.Models.EmployeeModel model)
         {
-            try
+            if(ModelState.IsValid)
             {
-                return RedirectToAction(nameof(Index));
+                EditEmployee(model);
+
+                return RedirectToAction("ViewEmployees");
             }
-            catch
-            {
-                return View();
-            }
+            return RedirectToAction("ViewEmployees");
         }
 
         // GET: EmployeeController/Delete/5
         public ActionResult Delete(int id)
         {
-            return View();
+            DeleteOneEmployee(id);
+
+            return RedirectToAction("ViewEmployees");
         }
 
-        // POST: EmployeeController/Delete/5
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Delete(int id, IFormCollection collection)
-        {
-            try
-            {
-                return RedirectToAction(nameof(Index));
-            }
-            catch
-            {
-                return View();
-            }
-        }
+        
     }
 }

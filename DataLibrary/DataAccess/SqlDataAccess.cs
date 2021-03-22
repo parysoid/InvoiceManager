@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
@@ -43,6 +44,14 @@ namespace DataLibrary
             using (IDbConnection cnn = new SqlConnection(GetConnectionString()))
             {
                 return cnn.QuerySingle<InvoiceModel>(sql, new { Id = id });
+            }
+        }
+        
+        public static EmployeeModel GetById(string sql, int id)
+        {
+            using (IDbConnection cnn = new SqlConnection(GetConnectionString()))
+            {
+                return cnn.Query<EmployeeModel>(sql, new { Id = id }).FirstOrDefault();
             }
         }
 

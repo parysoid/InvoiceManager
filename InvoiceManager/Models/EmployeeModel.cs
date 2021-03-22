@@ -18,5 +18,11 @@ namespace InvoiceManager.Models
         [Display(Name = "Příjmení")]
         [Required(ErrorMessage = "Musíte zadat křestní příjmení zaměstnance")]
         public string LastName { get; set; }
+
+        [Display(Name = "Přidáno")]
+        public DateTime CreatedAt { get; set; }
+
+        [Display(Name = "Upraveno")]
+        public DateTime UpdatedAt { get; set; }
     }
 }
