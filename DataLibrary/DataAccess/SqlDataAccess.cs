@@ -47,13 +47,22 @@ namespace DataLibrary
             }
         }
         
-        public static EmployeeModel GetById(string sql, int id)
+        public static EmployeeModel GetOneEmployee(string sql, int id)
         {
             using (IDbConnection cnn = new SqlConnection(GetConnectionString()))
             {
                 return cnn.Query<EmployeeModel>(sql, new { Id = id }).FirstOrDefault();
             }
         }
+        
+        public static PaymentModel GetOnePayment(string sql, int id)
+        {
+            using (IDbConnection cnn = new SqlConnection(GetConnectionString()))
+            {
+                return cnn.Query<PaymentModel>(sql, new { Id = id }).FirstOrDefault();
+            }
+        }
+        
 
         public static List<T> LoadMonth<T>(string sql, DateTime start, DateTime end)
         {

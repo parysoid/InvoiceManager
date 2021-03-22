@@ -61,6 +61,7 @@
   <ItemGroup>
     <Build Include="dbo\Invoices.sql" />
     <Build Include="dbo\Employees.sql" />
+    <Build Include="dbo\Payments.sql" />
   </ItemGroup>
   <ItemGroup>
     <RefactorLog Include="InvoiceManagerDB.refactorlog" />

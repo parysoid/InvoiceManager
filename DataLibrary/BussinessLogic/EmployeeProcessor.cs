@@ -34,7 +34,7 @@ namespace DataLibrary.BussinessLogic
             string sql = @"SELECT Id, FirstName, LastName
                            FROM dbo.Employees
                            WHERE Id = @Id;";
-            return SqlDataAccess.GetById(sql, employeeId);
+            return SqlDataAccess.GetOneEmployee(sql, employeeId);
         }
 
         public static int EditEmployee(EmployeeModel model)
