@@ -6,6 +6,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using static DataLibrary.BussinessLogic.PaymentProcessor;
+using static DataLibrary.BussinessLogic.EmployeeProcessor;
+
 
 namespace InvoiceManager.Controllers
 {
@@ -58,7 +60,7 @@ namespace InvoiceManager.Controllers
                     model.Date
                     );
 
-                return RedirectToAction("View");
+                return RedirectToAction("ViewPayments");
             }
             return View();
         }
