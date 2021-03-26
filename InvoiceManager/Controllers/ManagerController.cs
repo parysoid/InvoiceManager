@@ -1,14 +1,8 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using InvoiceManager.Logic;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
-using System.Linq;
-using InvoiceManager.Models;
 using static DataLibrary.BussinessLogic.InvoiceProcessor;
-using InvoiceManager.Logic;
-using Microsoft.Extensions.Options;
-using System;
-using DataLibrary.Models;
-using DataLibrary.BussinessLogic;
 
 namespace InvoiceManager.Controllers
 {
@@ -25,8 +19,8 @@ namespace InvoiceManager.Controllers
         {
             var data = LoadOneInvoice(id);
 
-            Models.InvoiceModel invoice = new Models.InvoiceModel() 
-            {                
+            Models.InvoiceModel invoice = new Models.InvoiceModel()
+            {
                 Id = data.Id,
                 InvoiceId = data.InvoiceId,
                 Description = data.Description,
@@ -51,14 +45,14 @@ namespace InvoiceManager.Controllers
         public ActionResult Create(Models.InvoiceModel model)
         {
             if (ModelState.IsValid)
-            {              
-                int recordsCreated = CreateInvoice(                       
+            {
+                int recordsCreated = CreateInvoice(
                     model.Description,
                     model.Value,
                     model.Date
                     );
-                   
-                return RedirectToAction("ViewInvoices");   
+
+                return RedirectToAction("ViewInvoices");
             }
             return View();
         }
@@ -87,13 +81,13 @@ namespace InvoiceManager.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Edit(int id, DataLibrary.Models.InvoiceModel model/*IFormCollection collection*/)
         {
-            if(ModelState.IsValid)
+            if (ModelState.IsValid)
             {
                 EditInvoice(model);
-                
+
                 return RedirectToAction("ViewInvoices");
             }
-            return RedirectToAction("ViewInvoices");           
+            return RedirectToAction("ViewInvoices");
         }
 
         // GET: ManagerController/Delete/5
@@ -119,7 +113,7 @@ namespace InvoiceManager.Controllers
                 return View();
             }
         }
-        
+
         public ActionResult ViewInvoices()
         {
             var data = LoadInvoices();
@@ -135,7 +129,7 @@ namespace InvoiceManager.Controllers
                     CreatedAt = row.CreatedAt,
                     UpdatedAt = row.UpdatedAt,
                     Value = row.Value,
-                    Date = row.Date                   
+                    Date = row.Date
                 });
             }
 
@@ -149,7 +143,7 @@ namespace InvoiceManager.Controllers
         {
             var dates = DateAndTime.GetMonthStartEnd2(month);
 
-            var data = LoadMonth(dates[0],dates[1]);
+            var data = LoadMonth(dates[0], dates[1]);
 
             List<Models.InvoiceModel> invoices = new List<Models.InvoiceModel>();
 
@@ -163,11 +157,11 @@ namespace InvoiceManager.Controllers
                     CreatedAt = row.CreatedAt,
                     UpdatedAt = row.UpdatedAt,
                     Value = row.Value,
-                    Date = row.Date                   
+                    Date = row.Date
                 });
             }
 
-            
+
 
             return View(invoices);
         }

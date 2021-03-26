@@ -1,7 +1,6 @@
-﻿using System;
+﻿using DataLibrary.Models;
+using System;
 using System.Collections.Generic;
-using System.Text;
-using DataLibrary.Models;
 
 namespace DataLibrary.BussinessLogic
 {
@@ -51,7 +50,7 @@ namespace DataLibrary.BussinessLogic
                 EmployeeId = model.EmployeeId,
                 Value = model.Value,
                 Date = model.Date,
-                Description = model.Description    
+                Description = model.Description
             };
 
             string sql = @"UPDATE dbo.Payments

@@ -1,7 +1,6 @@
 ﻿using DataLibrary.Models;
 using System;
 using System.Collections.Generic;
-using System.Text;
 namespace DataLibrary.BussinessLogic
 {
     public static class InvoiceProcessor
@@ -31,7 +30,7 @@ namespace DataLibrary.BussinessLogic
         }
 
         public static InvoiceModel LoadOneInvoice(int invoiceId)
-        {       
+        {
 
             string sql = @"SELECT Id, InvoiceId, Description, Value, CreatedAt, UpdatedAt, Date
                            FROM dbo.Invoices
@@ -55,7 +54,7 @@ namespace DataLibrary.BussinessLogic
                 Id = model.Id,
                 Description = model.Description,
                 Value = model.Value,
-                Date = model.Date                
+                Date = model.Date
             };
 
             string sql = @"UPDATE dbo.Invoices
@@ -81,6 +80,6 @@ namespace DataLibrary.BussinessLogic
             return SqlDataAccess.SaveData(sql, data);
         }
 
-        
+
     }
 }

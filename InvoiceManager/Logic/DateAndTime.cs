@@ -1,7 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace InvoiceManager.Logic
 {
@@ -26,9 +23,9 @@ namespace InvoiceManager.Logic
             {
 
             }
-            
 
-            return new DateTime[] { first, last };          
+
+            return new DateTime[] { first, last };
         }
 
         public static DateTime[] GetMonthStartEnd2(int monthInput)
@@ -37,7 +34,7 @@ namespace InvoiceManager.Logic
             var month = new DateTime(today.Year, today.Month, 1);
             var first = new DateTime();
             var last = new DateTime();
-            
+
             if (monthInput == 0)
             {
                 first = month;

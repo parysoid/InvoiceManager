@@ -1,9 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
-using System;
+﻿using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using static DataLibrary.BussinessLogic.EmployeeProcessor;
 
 namespace InvoiceManager.Controllers
@@ -41,7 +37,7 @@ namespace InvoiceManager.Controllers
 
         // GET: EmployeeController/Create
         public ActionResult Create()
-        {           
+        {
             return View();
         }
 
@@ -84,7 +80,7 @@ namespace InvoiceManager.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Edit(int id, DataLibrary.Models.EmployeeModel model)
         {
-            if(ModelState.IsValid)
+            if (ModelState.IsValid)
             {
                 EditEmployee(model);
 
@@ -101,6 +97,6 @@ namespace InvoiceManager.Controllers
             return RedirectToAction("ViewEmployees");
         }
 
-        
+
     }
 }

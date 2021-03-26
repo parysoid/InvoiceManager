@@ -1,13 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace InvoiceManager.Logic
 {
     public class Url
     {
-        public static bool HasId (string url)
+        public static bool HasId(string url)
         {
             int id = 0;
 

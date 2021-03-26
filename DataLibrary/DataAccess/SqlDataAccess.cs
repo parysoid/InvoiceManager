@@ -1,25 +1,23 @@
-﻿using System;
-using System.Collections;
+﻿using Dapper;
+using DataLibrary.DataContext;
+using DataLibrary.Models;
+using System;
 using System.Collections.Generic;
-using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
-using Dapper;
-using DataLibrary.DataContext;
-using DataLibrary.Models;
 
 namespace DataLibrary
-{   
+{
     public class SqlDataAccess
     {
         private static AppConfiguration settings = new AppConfiguration();
-       
+
         public static string GetConnectionString()
         {
             //return ConfigurationManager.ConnectionStrings[connectionName].ConnectionString;
             //var settings = new AppConfiguration();
-            
+
             return settings.sqlConnectionString;
         }
 
@@ -46,7 +44,7 @@ namespace DataLibrary
                 return cnn.QuerySingle<InvoiceModel>(sql, new { Id = id });
             }
         }
-        
+
         public static EmployeeModel GetOneEmployee(string sql, int id)
         {
             using (IDbConnection cnn = new SqlConnection(GetConnectionString()))
@@ -54,7 +52,7 @@ namespace DataLibrary
                 return cnn.Query<EmployeeModel>(sql, new { Id = id }).FirstOrDefault();
             }
         }
-        
+
         public static PaymentModel GetOnePayment(string sql, int id)
         {
             using (IDbConnection cnn = new SqlConnection(GetConnectionString()))
@@ -62,13 +60,13 @@ namespace DataLibrary
                 return cnn.Query<PaymentModel>(sql, new { Id = id }).FirstOrDefault();
             }
         }
-        
+
 
         public static List<T> LoadMonth<T>(string sql, DateTime start, DateTime end)
         {
             using (IDbConnection cnn = new SqlConnection(GetConnectionString()))
             {
-                 return cnn.Query<T>(sql,new { Start = start, End = end}).ToList();
+                return cnn.Query<T>(sql, new { Start = start, End = end }).ToList();
             }
         }
     }
